@@ -1,0 +1,65 @@
+﻿<Window x:Class="AnketTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnketTask"
+        mc:Ignorable="d"
+        Title="Anket" Height="350" Width="550">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Name" Grid.Column="0" Grid.Row="0" FontSize="18" FontFamily="Tahoma" Margin="5,10,0,0"/>
+                <Label Content="Surname" Grid.Column="0" Grid.Row="1" FontSize="18" FontFamily="Tahoma" Margin="5,10,0,0"/>
+                <Label Content="Email" Grid.Column="0" Grid.Row="2" FontSize="18" FontFamily="Tahoma" Margin="5,10,0,0"/>
+                <Label Content="Phone" Grid.Column="0" Grid.Row="3" FontSize="18" FontFamily="Tahoma" Margin="5,10,0,0"/>
+                <Label Content="Birthday" Grid.Column="0" Grid.Row="4" FontSize="18" FontFamily="Tahoma" Margin="5,10,0,0"/>
+
+                <TextBox Name="nameTextBox" Grid.Column="0" Grid.Row="0" Width="200" Height="25" FontSize="16" Margin="0,10,35,5"></TextBox>
+                <TextBox Name="surnameTextBox" Grid.Column="0" Grid.Row="1" Width="200" Height="25" FontSize="16" Margin="10,10,0,5"></TextBox>
+                <TextBox Name="emailTextBox" Grid.Column="0" Grid.Row="2" Width="200" Height="25" FontSize="16" Margin="0,10,35,5"></TextBox>
+                <TextBox Name="phoneTextBox" Grid.Column="0" Grid.Row="3" Width="200" Height="25" FontSize="16" Margin="0,10,25,5"></TextBox>
+                <DatePicker Name="birthDayDatePicker" Grid.Column="0" Grid.Row="4" Width="200" Height="25"></DatePicker>
+
+                <Button Name="addButton" Content="Add" FontWeight="Bold" Grid.Column="0" Grid.Row="5" Margin="70,20" FontSize="17" Click="addButton_Click"></Button>
+            </Grid>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.13*"/>
+                    <RowDefinition Height="0.15*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Listbox" Grid.Column="1" Grid.Row="0" FontSize="18" FontFamily="Tahoma" Margin="50,0"/>
+                <TextBox Name="loadSaveTextBox" Grid.Column="1" Grid.Row="1" Margin="10,5"></TextBox>
+                <Button Name="saveButton" Content="Save" FontWeight="Bold" Grid.Column="1" Grid.Row="2" Margin="7, 7, 95, 7" Click="saveButton_Click"></Button>
+                <Button Name="loadButton" Content="Load" FontWeight="Bold" Grid.Column="1" Grid.Row="2" Margin="95, 7, 7, 7" Click="loadButton_Click"></Button>
+
+                <ListBox Name="listBox" Grid.Column="1" Grid.Row="0" FontSize="15" Margin="10,30,10,10" ItemsSource="{Binding Person}" SelectionChanged="listBox_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
